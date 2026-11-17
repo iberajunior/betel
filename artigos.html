@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artigos | Betel Engenharia | Conteúdo Técnico de Engenharia Industrial</title>
+<meta name="description" content="Artigos e conteúdo técnico da Betel Engenharia sobre montagens industriais, elétrica, tubulações, automação e projetos de engenharia.">
+<meta name="keywords" content="engenharia industrial, montagens industriais, elétrica industrial, tubulações industriais, automação industrial, Curitiba, Betel Engenharia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue:#1A56FF;--blue-dark:#1A237E;--blue-mid:#2563EB;--blue-light:#EEF3FF;
+    --dark:#0F172A;--dark-2:#1E293B;--gray-100:#F8FAFC;--gray-200:#F1F5F9;
+    --gray-300:#E2E8F0;--gray-600:#475569;--gray-700:#334155;--white:#FFFFFF;
+    --font-head:'Montserrat',sans-serif;--font-body:'Nunito Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--font-body);color:var(--dark);background:var(--white);overflow-x:hidden;font-size:16px;}
+
+  /* HEADER WRAPPER
+     Fundo navy contínuo atrás da topbar E da navbar. É ele que faz os cantos
+     arredondados da navbar aparecerem: a navbar branca é recuada 10px de cada
+     lado e o navy do wrapper vaza por trás do raio. */
+  .header-wrap{background:#1A237E;}
+
+  /* TOP BAR */
+  .topbar{height:56px;padding:0 38px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;}
+  /* Grupo à esquerda ocupa o espaço vazio da faixa navy. */
+  .topbar-nav{display:flex;align-items:center;gap:22px;}
+  .topbar-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;transition:color .2s;}
+  .topbar-nav a:hover{color:#fff;}
+  .topbar-tel{display:flex;align-items:center;gap:7px;white-space:nowrap;text-transform:none!important;letter-spacing:0!important;font-weight:500!important;}
+  .topbar-tel svg{flex-shrink:0;}
+  .topbar-right{display:flex;align-items:center;gap:10px;}
+  .topbar-link{color:rgba(255,255,255,.85);text-decoration:none;font-weight:500;display:flex;align-items:center;gap:6px;padding-right:12px;transition:color .2s;}
+  .topbar-link:hover{color:#fff;}
+  .topbar-btn{display:inline-flex;align-items:center;height:32px;padding:0 24px;border-radius:20px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .2s,transform .2s,box-shadow .2s;}
+  .topbar-btn:hover{transform:translateY(-1px);}
+  .topbar-btn.tb-white{background:#fff;color:var(--dark);}
+  .topbar-btn.tb-white:hover{background:var(--gray-200);}
+  .topbar-btn.tb-blue{background:var(--blue);color:#fff;}
+  .topbar-btn.tb-blue:hover{background:#2563EB;box-shadow:0 4px 14px rgba(26,86,255,.4);}
+  .topbar-btn.tb-blue-alt{background:#2563EB;color:#fff;}
+  .topbar-btn.tb-blue-alt:hover{background:#1D4ED8;box-shadow:0 4px 14px rgba(37,99,235,.4);}
+
+  /* NAVBAR */
+  nav{background:var(--white);margin:0 10px;border-radius:50px 50px 0 0;padding:0 48px;height:80px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-left{display:flex;align-items:center;gap:20px;}
+  .logo{padding:12px 0;display:block;}
+  .logo img{height:56px;width:auto;display:block;}
+
+  /* NAVBAR FIXA — some acima da tela e desce quando o header sai de vista.
+     Espelha o comportamento do #menu-oculto do MSE. */
+  .nav-sticky{position:fixed;top:0;left:0;right:0;height:64px;background:var(--white);
+    padding:0 38px;display:flex;align-items:center;justify-content:space-between;
+    z-index:250;box-shadow:0 2px 20px rgba(15,23,42,.12);
+    transform:translateY(-100%);transition:transform .35s ease;}
+  .nav-sticky.show{transform:translateY(0);}
+  .nav-sticky .logo{padding:0;}
+  .nav-sticky .logo img{height:42px;}
+  .nav-sticky .nav-links a{padding:20px 12px;}
+
+  /* HAMBURGER */
+  .hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:8px;border:none;background:transparent;border-radius:6px;transition:background .2s;}
+  .hamburger:hover{background:var(--gray-200);}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--gray-700);border-radius:2px;transition:transform .3s, opacity .3s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* MEGA MENU */
+  .mega-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--white);z-index:300;padding:40px 64px;display:none;overflow-y:auto;}
+  .mega-menu.open{display:block;animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+  .mega-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:52px;padding-bottom:20px;border-bottom:1px solid var(--gray-300);}
+  .mega-top .logo img{height:44px;}
+  .mega-close{width:40px;height:40px;border:none;background:var(--gray-200);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gray-700);transition:background .2s;}
+  .mega-close:hover{background:var(--gray-300);}
+  .mega-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;}
+  .mega-col h4{font-family:var(--font-head);font-size:13px;font-weight:800;color:var(--dark);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--blue);}
+  /* Bloco SERVIÇOS: ocupa duas colunas do mega-grid, com um título só e os
+     links quebrados em 2 colunas (mesmo tratamento do footer). */
+  .mega-col-wide{grid-column:span 2;}
+  .mega-col-wide ul{columns:2;column-gap:32px;}
+  .mega-col-wide ul li{break-inside:avoid;}
+  .mega-col ul{list-style:none;}
+  .mega-col ul li{margin-bottom:14px;}
+  .mega-col ul a{font-size:17px;color:var(--gray-600);text-decoration:none;font-weight:400;display:flex;align-items:center;gap:8px;transition:color .2s,gap .2s;}
+  .mega-col ul a::before{content:'→';font-size:11px;color:var(--blue);opacity:0;transition:opacity .2s;}
+  .mega-col ul a:hover{color:var(--blue);gap:12px;}
+  .mega-col ul a:hover::before{opacity:1;}
+
+  .nav-links{display:flex;list-style:none;align-items:center;gap:2px;}
+  .nav-links a{text-decoration:none;color:var(--gray-700);font-size:15px;font-weight:600;padding:20px 14px;display:block;transition:color .2s;position:relative;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:3px;background:var(--blue);border-radius:3px 3px 0 0;transform:scaleX(0);transition:transform .25s;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .nav-links a.active{color:var(--blue);}
+  .nav-links a.active::after{transform:scaleX(1);}
+  .nav-cta{background:var(--blue)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:8px!important;font-weight:700!important;margin-left:8px;transition:background .2s!important;}
+  .nav-cta:hover{background:var(--blue-dark)!important;}
+  .nav-cta::after{display:none!important;}
+
+  /* MOLDURA DO HERO
+     Continua o navy do header e desce em degrade ate o branco nas laterais,
+     igual ao MSE. Sem isso a faixa azul das bordas da navbar terminava
+     cortada logo abaixo dela. O padding lateral de 10px casa com o
+     margin:0 10px da navbar, entao as duas tiras ficam alinhadas. */
+  .hero-frame{background:linear-gradient(180deg,#1A237E 0%,var(--white) 89%);padding:0 10px;}
+
+  /* HERO */
+  .hero{display:grid;grid-template-columns:1fr 1.45fr;min-height:540px;background:var(--blue-light);}
+  .hero-left{background:var(--blue-light);padding:64px 52px 64px 64px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+  .hero-left::before{content:'';position:absolute;bottom:-120px;left:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(26,86,255,.10) 0%,transparent 70%);pointer-events:none;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(26,86,255,.10);border:1px solid rgba(26,86,255,.25);color:var(--blue);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:100px;width:fit-content;margin-bottom:24px;}
+  .hero-title{font-family:var(--font-head);font-size:clamp(38px,3.5vw,58px);font-weight:800;line-height:1.1;color:var(--dark);margin-bottom:20px;letter-spacing:-.5px;}
+  .hero-title span{background:linear-gradient(135deg,var(--blue),var(--blue-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-body{font-size:17px;line-height:1.75;color:var(--gray-600);max-width:420px;margin-bottom:36px;}
+  .hero-stats{display:flex;margin-bottom:40px;background:var(--white);border:1px solid var(--gray-300);border-radius:12px;overflow:hidden;width:fit-content;box-shadow:0 2px 14px rgba(15,23,42,.05);}
+  .stat{padding:16px 28px;text-align:center;border-right:1px solid var(--gray-300);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--dark);line-height:1;margin-bottom:4px;}
+  .stat-num span{color:var(--blue);}
+  .stat-label{font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+  .hero-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);text-decoration:none;font-size:15px;font-weight:700;padding:15px 32px;border-radius:10px;width:fit-content;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(26,86,255,.35);}
+  .hero-btn:hover{background:#2563EB;transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,86,255,.45);}
+  .hero-right{position:relative;overflow:hidden;}
+  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .9s ease;image-rendering:-webkit-optimize-contrast;}
+  .hero-slide.active{opacity:1;}
+  /* Sem escurecimento na borda esquerda: o painel do hero agora e claro e o
+     degrade criava uma emenda dura entre os dois lados. A legibilidade da
+     legenda continua vindo do gradiente proprio de .slide-caption. */
+  .hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(15,23,42,.12) 0%,transparent 35%);}
+  .slide-caption{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:32px 32px 28px;background:linear-gradient(to top,rgba(15,23,42,.85) 0%,transparent 100%);}
+  .slide-caption strong{display:block;font-family:var(--font-head);font-size:19px;font-weight:700;color:var(--white);margin-bottom:3px;}
+  .slide-caption span{font-size:13px;color:rgba(255,255,255,.6);}
+  .hero-dots{position:absolute;bottom:28px;right:28px;z-index:3;display:flex;gap:7px;}
+  .hero-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .2s,transform .2s;}
+  .hero-dot.active{background:var(--blue);transform:scale(1.4);}
+
+  /* TAGLINE */
+  .tagline-strip{background:var(--gray-100);border-bottom:1px solid var(--gray-300);padding:32px 64px;text-align:center;}
+  .tagline-strip p{font-family:var(--font-head);font-size:clamp(18px,1.6vw,25px);font-weight:700;color:var(--dark-2);}
+  .tagline-strip a{display:inline-block;margin-top:8px;color:var(--blue);text-decoration:none;font-size:14px;font-weight:700;}
+  .tagline-strip a:hover{text-decoration:underline;}
+
+  /* SECTION COMMONS */
+  .section-header{display:flex;align-items:center;justify-content:space-between;padding:52px 64px 24px;}
+  .section-title{font-family:var(--font-head);font-size:clamp(24px,2.5vw,34px);font-weight:800;color:var(--dark);letter-spacing:-.3px;}
+  .section-title span{color:var(--blue);}
+  .see-all{font-size:14px;color:var(--blue);text-decoration:none;font-weight:700;display:flex;align-items:center;gap:5px;}
+  .see-all:hover{text-decoration:underline;}
+
+  /* CAROUSEL */
+  .carousel-wrap{position:relative;padding:0 64px 52px;}
+  .carousel-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;}
+  .carousel-track::-webkit-scrollbar{display:none;}
+  .card{flex:0 0 calc(25% - 12px);min-width:230px;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer;background:#111;box-shadow:0 2px 16px rgba(0,0,0,.1);transition:transform .35s,box-shadow .35s;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(26,86,255,.18);}
+  .card-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;filter:brightness(.82);image-rendering:-webkit-optimize-contrast;}
+  .card:hover .card-img{transform:scale(1.06);filter:brightness(.65);}
+  .card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.8) 0%,rgba(15,23,42,0) 55%);}
+  .card-info{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;}
+  .card-tag{display:inline-block;background:var(--blue);color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 9px;border-radius:100px;margin-bottom:7px;}
+  .card-name{font-family:var(--font-head);font-size:18px;font-weight:800;color:#fff;line-height:1.25;}
+  .card-sub{font-size:13px;color:rgba(255,255,255,.65);margin-top:3px;}
+  .card-plus{position:absolute;bottom:14px;right:14px;width:30px;height:30px;background:rgba(26,86,255,.7);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;opacity:0;transition:opacity .25s;}
+  .card:hover .card-plus{opacity:1;}
+  .carousel-nav{position:absolute;top:calc(50% - 26px);transform:translateY(-50%);width:40px;height:40px;background:var(--white);border:1px solid var(--gray-300);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.1);z-index:2;transition:background .2s,border-color .2s;color:var(--gray-700);}
+  .carousel-nav:hover{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .carousel-prev{left:16px;}
+  .carousel-next{right:16px;}
+
+  /* ===== SEGMENTOS — LIGHT BLUE BLOCK ===== */
+  .segmentos{background:var(--blue-light);padding:72px 64px;position:relative;overflow:hidden;}
+
+  /* Particle canvas */
+  #seg-canvas{position:absolute;inset:0;pointer-events:none;z-index:0;}
+
+  /* Soft glow orbs */
+  .seg-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;}
+  .seg-orb-1{width:600px;height:600px;top:-200px;right:-150px;background:radial-gradient(circle,rgba(26,86,255,.10) 0%,transparent 65%);}
+  .seg-orb-2{width:400px;height:400px;bottom:-100px;left:-100px;background:radial-gradient(circle,rgba(14,116,233,.09) 0%,transparent 65%);}
+
+  .segmentos-headline{text-align:center;margin-bottom:48px;position:relative;z-index:1;}
+  .segmentos-headline h2{font-family:var(--font-head);font-size:clamp(22px,2.2vw,30px);font-weight:800;color:var(--dark);margin-bottom:10px;}
+  .segmentos-headline h2 em{color:var(--blue);font-style:normal;}
+  .segmentos-headline p{font-size:16px;color:var(--gray-600);}
+
+  .segmentos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1;}
+  .seg-card{background:var(--white);padding:28px 26px 24px;border:1px solid var(--gray-300);border-radius:16px;transition:background .3s,border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;box-shadow:0 2px 14px rgba(15,23,42,.05);}
+  .seg-card:hover{background:var(--blue-light);border-color:rgba(26,86,255,.35);transform:translateY(-4px);box-shadow:0 14px 30px rgba(26,86,255,.14);}
+  /* shine sweep on hover */
+  .seg-card::before{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(26,86,255,.05) 50%,transparent 70%);transform:translateX(-100%);transition:transform .55s ease;}
+  .seg-card:hover::before{transform:translateX(100%);}
+
+  .seg-icon{width:52px;height:52px;background:rgba(26,86,255,.08);border:1px solid rgba(26,86,255,.22);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .seg-icon svg{width:26px;height:26px;stroke:var(--blue);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+  .seg-name{font-family:var(--font-head);font-size:18px;font-weight:800;color:var(--dark);margin-bottom:9px;}
+  .seg-desc{font-size:15px;color:var(--gray-600);line-height:1.65;}
+  .seg-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;color:var(--blue);text-decoration:none;font-weight:700;transition:gap .2s;}
+  .seg-link:hover{gap:10px;}
+
+  /* SOBRE */
+  .sobre{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:var(--white);}
+  .sobre-img{position:relative;overflow:hidden;background:#111;}
+  .sobre-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.75);image-rendering:-webkit-optimize-contrast;}
+  .sobre-badge{position:absolute;bottom:32px;left:32px;background:var(--blue);color:#fff;padding:16px 22px;border-radius:12px;font-family:var(--font-head);line-height:1.2;box-shadow:0 8px 24px rgba(26,86,255,.4);}
+  .sobre-badge strong{display:block;font-size:32px;font-weight:800;}
+  .sobre-badge span{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;opacity:.9;}
+  .sobre-content{background:var(--gray-100);padding:72px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .sobre-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--blue);font-weight:700;margin-bottom:14px;}
+  .sobre-title{font-family:var(--font-head);font-size:clamp(30px,3vw,44px);font-weight:800;line-height:1.1;color:var(--dark);margin-bottom:20px;letter-spacing:-.3px;}
+  .sobre-text{font-size:17px;line-height:1.8;color:var(--gray-600);margin-bottom:28px;}
+  .sobre-highlights{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .chip{background:var(--blue-light);color:var(--blue-dark);font-size:13px;font-weight:700;padding:6px 14px;border-radius:100px;border:1px solid rgba(26,86,255,.15);}
+  .sobre-btn{display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);text-decoration:none;font-size:15px;font-weight:700;padding:13px 28px;border-radius:9px;width:fit-content;box-shadow:0 4px 16px rgba(26,86,255,.25);transition:background .2s,transform .2s;}
+  .sobre-btn:hover{background:var(--blue-dark);transform:translateY(-1px);}
+
+  /* EQUIPE — full-bleed image mirrored vs. Sobre */
+  .equipe-strip{display:grid;grid-template-columns:1fr 1fr;min-height:500px;background:var(--white);border-top:1px solid var(--gray-300);border-bottom:1px solid var(--gray-300);}
+  .equipe-text{background:var(--gray-200);padding:72px 60px;display:flex;flex-direction:column;justify-content:center;}
+  .equipe-text h2{font-family:var(--font-head);font-size:clamp(26px,2.5vw,36px);font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:16px;letter-spacing:-.3px;}
+  .equipe-text h2 span{color:var(--blue);}
+  .equipe-text p{font-size:17px;color:var(--gray-600);line-height:1.8;margin-bottom:28px;}
+  .certifs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+  .certif-tag{background:var(--white);border:1px solid rgba(26,86,255,.2);color:var(--blue-dark);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:6px 13px;border-radius:100px;}
+  .equipe-img{position:relative;overflow:hidden;background:#0B1220;}
+  .equipe-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* CLIENTES */
+  .clientes{padding:52px 64px;background:var(--white);}
+  .clientes-header{text-align:center;margin-bottom:40px;}
+  .clientes-header h2{font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--dark);margin-bottom:6px;}
+  .clientes-header p{font-size:16px;color:var(--gray-600);}
+  .clientes-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+  .cliente-item{background:var(--gray-100);border:1px solid var(--gray-300);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:center;min-height:80px;filter:grayscale(100%);opacity:.55;transition:filter .3s,opacity .3s,transform .2s,box-shadow .2s;cursor:default;}
+  .cliente-item:hover{filter:grayscale(0);opacity:1;transform:translateY(-2px);box-shadow:0 4px 16px rgba(26,86,255,.12);}
+  .cliente-item img{max-width:100%;max-height:60px;object-fit:contain;display:block;}
+
+  /* ARTIGOS (home) — 3 destaques logo antes do footer */
+  .artigos-home{padding:0 64px 64px;background:var(--gray-100);}
+  .artigos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .artigo-card{background:var(--white);border:1px solid var(--gray-300);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s;}
+  .artigo-card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(26,86,255,.14);border-color:rgba(26,86,255,.35);}
+  .artigo-thumb{aspect-ratio:16/9;overflow:hidden;background:#0B1220;}
+  .artigo-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .artigo-card:hover .artigo-thumb img{transform:scale(1.05);}
+  .artigo-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+  .artigo-tag{display:inline-block;background:var(--blue-light);color:var(--blue-dark);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;padding:4px 10px;border-radius:100px;margin-bottom:12px;width:fit-content;}
+  .artigo-card h3{font-family:var(--font-head);font-size:19px;font-weight:800;line-height:1.3;color:var(--dark);margin-bottom:10px;}
+  .artigo-card p{font-size:15px;line-height:1.7;color:var(--gray-600);margin-bottom:18px;flex:1;}
+  .artigo-link{font-size:13px;font-weight:700;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;}
+  .artigo-link:hover{gap:10px;}
+
+  /* FOOTER */
+  footer{background-color:#1A237E;padding:60px 64px 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;margin-bottom:44px;}
+  .footer-logo{display:block;margin-bottom:26px;}
+  .footer-logo img{height:68px;width:auto;}
+  .footer-contact{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;}
+  .fci{display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,.68);}
+  .fci a{color:rgba(255,255,255,.68);text-decoration:none;transition:color .2s;}
+  .fci a:hover{color:#fff;}
+  .fci-icon{width:30px;height:30px;background:rgba(255,255,255,.07);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fci-icon svg{width:15px;height:15px;stroke:#60A5FA;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  .footer-social{display:flex;gap:10px;}
+  .footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .2s;}
+  .footer-social a svg{width:17px;height:17px;stroke:#93C5FD;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s;}
+  .footer-social a:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-3px);}
+  .footer-social a:hover svg{stroke:#fff;}
+  .footer-col h4{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1);}
+  /* Bloco SERVIÇOS: ocupa as duas últimas colunas do grid, com um único título
+     e a lista de links quebrada em 2 colunas. */
+  .footer-col-wide{grid-column:span 2;}
+  .footer-col-wide ul{columns:2;column-gap:28px;}
+  .footer-col-wide ul li{break-inside:avoid;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:11px;}
+  .footer-col ul a{font-size:15px;color:rgba(255,255,255,.72);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:6px;}
+  .footer-col ul a::before{content:'→';font-size:10px;color:#60A5FA;opacity:0;transition:opacity .2s;}
+  .footer-col ul a:hover{color:#fff;}
+  .footer-col ul a:hover::before{opacity:1;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:8px;}
+  .footer-bottom a{color:rgba(255,255,255,.7);text-decoration:none;font-weight:600;transition:color .2s;}
+  .footer-bottom a:hover{color:#fff;}
+
+  /* WA FLOAT */
+  .wa-float{position:fixed;bottom:28px;right:28px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:200;text-decoration:none;transition:transform .3s;}
+  .wa-float:hover{transform:scale(1.1);}
+  .wa-float svg{width:26px;height:26px;fill:#fff;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .hero-left>*{animation:fadeUp .65s ease both;}
+  .hero-left>*:nth-child(1){animation-delay:.05s;}
+  .hero-left>*:nth-child(2){animation-delay:.15s;}
+  .hero-left>*:nth-child(3){animation-delay:.25s;}
+  .hero-left>*:nth-child(4){animation-delay:.35s;}
+  .hero-left>*:nth-child(5){animation-delay:.45s;}
+
+  /* =========================================================
+     RESPONSIVO
+     Breakpoints: 1024px (tablet), 768px (mobile grande), 480px (mobile pequeno)
+     ========================================================= */
+
+  /* ---------- TABLET (<=1024px) ---------- */
+  @media (max-width: 1024px){
+    body{background:var(--gray-300);}
+    .site-frame{margin:0 10px 10px;}
+   
+    .topbar{padding:0 18px;gap:12px;height:52px;}
+    .topbar-nav{gap:14px;}
+    .topbar-link{display:none;}
+    .topbar-btn{padding:0 16px;height:30px;font-size:11px;}
+    nav{padding:0 24px;height:72px;border-radius:40px 40px 0 0;}
+    .nav-sticky{padding:0 24px;}
+    .logo img{height:46px;}
+    .nav-links{gap:0;}
+    .nav-links li:not(:last-child){display:none;}
+    .nav-links a{padding:16px 10px;}
+    .nav-cta{padding:9px 16px!important;font-size:14px!important;}
+
+    .mega-menu{padding:28px 32px;}
+    .mega-grid{grid-template-columns:repeat(2,1fr);gap:32px 24px;}
+
+    .hero{grid-template-columns:1fr;min-height:auto;}
+    .hero-left{padding:48px 32px;}
+    .hero-right{min-height:380px;}
+    .hero-body{max-width:100%;}
+
+    .tagline-strip{padding:26px 32px;}
+    .section-header{padding:40px 32px 20px;}
+    .carousel-wrap{padding:0 32px 40px;}
+    .card{flex:0 0 calc(38% - 12px);min-width:200px;}
+
+    .segmentos{padding:56px 32px;}
+    .segmentos-grid{grid-template-columns:repeat(2,1fr);}
+
+    .sobre{grid-template-columns:1fr;min-height:auto;}
+    .sobre-img{min-height:340px;}
+    .sobre-content{padding:52px 32px;}
+
+    .equipe-strip{grid-template-columns:1fr;min-height:auto;}
+    .equipe-img{min-height:340px;order:-1;}
+    .equipe-text{padding:52px 32px;}
+
+    .clientes{padding:44px 32px;}
+    .clientes-grid{grid-template-columns:repeat(4,1fr);}
+
+    .artigos-home{padding:0 32px 48px;}
+    .artigos-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+
+    footer{padding:48px 32px 24px;}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  }
+
+  /* ---------- MOBILE (<=768px) ---------- */
+  @media (max-width: 768px){
+    /* Topbar vira uma faixa de pílulas rolável em vez de sumir — assim o
+       "Baixe o Folder" continua acessível no celular. */
+    .topbar{padding:0 14px;height:48px;justify-content:flex-start;overflow-x:auto;
+      scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+    .topbar::-webkit-scrollbar{display:none;}
+    .topbar-btn{flex:0 0 auto;}
+    /* No celular so o telefone cabe na tira; o e-mail continua no rodape. */
+    .topbar-nav{flex:0 0 auto;gap:0;}
+    .topbar-nav a:not(.topbar-tel:first-child){display:none;}
+    .topbar-nav .topbar-tel:first-child{padding-right:4px;}
+    nav{padding:0 16px;height:64px;border-radius:28px 28px 0 0;}
+    .nav-sticky{padding:0 16px;height:58px;}
+    .logo img{height:40px;}
+    .nav-left{gap:10px;}
+
+    .mega-menu{padding:20px 20px;}
+    .mega-top{margin-bottom:32px;padding-bottom:16px;}
+    .mega-top .logo img{height:36px;}
+    .mega-grid{grid-template-columns:1fr;gap:28px;}
+    .mega-col-wide ul{columns:1;}
+    .footer-col-wide ul{columns:1;}
+
+    /* Tira lateral em degrade some no celular: 10px de cada lado numa tela
+       estreita so rouba largura do conteudo. */
+    .hero-frame{padding:0;background:none;}
+    .hero-left{padding:40px 20px;}
+    .hero-eyebrow{font-size:11px;padding:5px 12px;}
+    .hero-title{margin-bottom:16px;}
+    .hero-body{font-size:16px;margin-bottom:28px;}
+    .hero-stats{flex-wrap:wrap;width:100%;}
+    .stat{flex:1 1 33%;padding:12px 10px;}
+    .hero-right{min-height:280px;}
+    .slide-caption{padding:22px 20px 18px;}
+
+    .tagline-strip{padding:22px 20px;}
+    .section-header{padding:32px 20px 16px;flex-wrap:wrap;gap:8px;}
+    .carousel-wrap{padding:0 20px 32px;}
+    .card{flex:0 0 78%;min-width:0;}
+    .carousel-nav{display:none;}
+
+    .segmentos{padding:44px 20px;}
+    .segmentos-headline{margin-bottom:32px;}
+    .segmentos-grid{grid-template-columns:1fr;gap:14px;}
+
+    .sobre-img{min-height:280px;}
+    .sobre-content{padding:40px 20px;}
+    .sobre-badge{left:20px;bottom:20px;padding:12px 16px;}
+    .sobre-badge strong{font-size:26px;}
+
+    .equipe-img{min-height:280px;}
+    .equipe-text{padding:40px 20px;}
+    .certifs{gap:6px;}
+
+    .clientes{padding:36px 20px;}
+    .clientes-header{margin-bottom:28px;}
+    .clientes-grid{grid-template-columns:repeat(3,1fr);gap:10px;}
+    .cliente-item{min-height:64px;padding:8px 8px;}
+    .cliente-item img{max-height:46px;}
+
+    .artigos-home{padding:0 20px 40px;}
+    .artigos-grid{grid-template-columns:1fr;gap:16px;}
+
+    footer{padding:40px 20px 20px;}
+    .footer-grid{grid-template-columns:1fr;gap:32px;margin-bottom:32px;}
+    .footer-social{flex-wrap:wrap;}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px;}
+
+    .wa-float{width:48px;height:48px;bottom:20px;right:20px;}
+    .wa-float svg{width:24px;height:24px;}
+  }
+
+  /* ---------- MOBILE PEQUENO (<=480px) ---------- */
+  @media (max-width: 480px){
+    .hero-stats{flex-wrap:nowrap;}
+    .stat{padding:10px 6px;}
+    .stat-num{font-size:22px;}
+    .stat-label{font-size:9px;letter-spacing:.5px;}
+    .hero-btn{width:100%;justify-content:center;padding:14px 20px;}
+
+    .card{flex:0 0 88%;}
+
+    .clientes-grid{grid-template-columns:repeat(2,1fr);}
+
+    .footer-contact{gap:10px;}
+    .fci{font-size:14px;}
+  }
+  /* ===== PAGINAS INTERNAS ===== */
+  .page-title-simple{padding:44px 64px 40px;background:var(--white);border-bottom:1px solid var(--gray-300);}
+  .breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600);margin-bottom:18px;}
+  .breadcrumb a{color:var(--gray-600);text-decoration:none;transition:color .2s;}
+  .breadcrumb a:hover{color:var(--blue);}
+  .breadcrumb span.current{color:var(--blue);font-weight:700;}
+  .page-title-simple h1{font-family:var(--font-head);font-size:clamp(30px,3.6vw,46px);font-weight:800;line-height:1.15;color:var(--dark);letter-spacing:-.5px;max-width:820px;}
+  .page-title-simple h1 span{color:var(--blue);}
+  .page-title-simple p{font-size:17px;line-height:1.75;color:var(--gray-600);max-width:660px;margin-top:16px;}
+
+  .cta-strip{background:linear-gradient(120deg,var(--blue-dark),var(--blue));padding:64px;text-align:center;position:relative;overflow:hidden;}
+  .cta-strip h2{font-family:var(--font-head);font-size:clamp(24px,2.8vw,36px);font-weight:800;color:var(--white);margin-bottom:14px;}
+  .cta-strip p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:32px;max-width:560px;margin-left:auto;margin-right:auto;}
+  .cta-strip .hero-btn{background:var(--white);color:var(--blue-dark);margin:0 auto;box-shadow:0 8px 24px rgba(0,0,0,.2);}
+  .cta-strip .hero-btn:hover{background:var(--gray-100);}
+
+  /* ===== ARTIGOS (pagina) =====
+     Os estilos do .artigo-card ja vem do index.html, que tem a secao de
+     artigos na home. Aqui so entra o wrapper especifico da pagina. */
+  .artigos-wrap{padding:56px 64px 72px;background:var(--gray-100);}
+
+  /* ===== FAQ ===== */
+  .faq-wrap{padding:56px 64px 72px;max-width:920px;margin:0 auto;}
+  .faq-group{margin-bottom:38px;}
+  .faq-group h2{font-family:var(--font-head);font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--blue);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--gray-300);}
+  .faq-item{border:1px solid var(--gray-300);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--white);transition:border-color .25s,box-shadow .25s;}
+  .faq-item.open{border-color:rgba(26,86,255,.4);box-shadow:0 6px 20px rgba(26,86,255,.10);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--font-body);font-size:16px;font-weight:700;color:var(--dark);padding:18px 52px 18px 22px;position:relative;display:block;transition:color .2s;}
+  .faq-q:hover{color:var(--blue);}
+  .faq-q::after{content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:var(--blue);transition:transform .25s;}
+  .faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-a div{padding:0 22px 20px;font-size:15px;line-height:1.75;color:var(--gray-600);}
+  .faq-item.open .faq-a{max-height:420px;}
+
+  @media (max-width:1024px){
+    .page-title-simple{padding:36px 32px 32px;}
+    .cta-strip{padding:48px 32px;}
+    .artigos-wrap{padding:44px 32px 56px;}
+    .artigos-grid{grid-template-columns:repeat(2,1fr);}
+    .faq-wrap{padding:44px 32px 56px;}
+  }
+  @media (max-width:768px){
+    .page-title-simple{padding:28px 20px 26px;}
+    .page-title-simple p{font-size:16px;}
+    .cta-strip{padding:40px 20px;}
+    .artigos-wrap{padding:36px 20px 48px;}
+    .artigos-grid{grid-template-columns:1fr;}
+    .faq-wrap{padding:36px 20px 48px;}
+  }
+
+  /* =========================================================
+     AJUSTES 11/2026
+     ========================================================= */
+  /* Menu e barra superior em caixa alta */
+  .nav-links a,.topbar-btn,.topbar a,.topbar-nav a,.mega-actions a{text-transform:uppercase;letter-spacing:.6px;}
+  .nav-links a{font-size:14px;}
+  .topbar a[href^="mailto"],.topbar-nav a[href^="mailto"]{text-transform:none!important;letter-spacing:0!important;}
+
+  /* Titulos em uma cor so (azul escuro), sem destaque em duas cores */
+  .hero-title,.section-title,.sobre-title,.equipe-text h2,.segmentos-headline h2,.clientes-header h2,
+  .section-header-center h2,.page-title-simple h1,.apresentacao h2,.pilar-content h2,.mvv-card h3{color:var(--blue-dark);}
+  h1 span,h1 em,h2 span,h2 em,.hero-title span,.page-banner-title span,.section-title span{
+    color:inherit!important;background:none!important;-webkit-text-fill-color:currentColor!important;font-style:normal;}
+
+  /* Sem "baloes": rotulos viram texto simples */
+  .hero-eyebrow{background:none!important;border:none!important;padding:0!important;border-radius:0!important;}
+  .artigo-tag,.seg-badge{background:none!important;padding:0!important;border-radius:0!important;color:var(--blue)!important;}
+
+  /* Topicos (substituem os baloes de termos) */
+  .topicos{text-align:left;list-style:none;margin:0 0 28px;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .topicos li{position:relative;padding-left:26px;font-size:16px;font-weight:600;color:var(--gray-700);line-height:1.45;}
+  .topicos li::before{content:'';position:absolute;left:0;top:5px;width:14px;height:14px;border-radius:3px;
+    background:var(--blue);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;}
+
+  /* Videos de fundo mais discretos, no mesmo tom das fotos */
+  .video-hero video{filter:saturate(.4) brightness(.95)!important;}
+
+  /* Cards dos carrosseis agora sao links */
+  a.card{display:block;text-decoration:none;color:inherit;}
+
+  /* Botao voltar ao topo */
+  .to-top{position:fixed;right:30px;bottom:92px;width:46px;height:46px;border-radius:50%;border:none;cursor:pointer;
+    background:var(--blue-dark);color:#fff;display:flex;align-items:center;justify-content:center;z-index:199;
+    box-shadow:0 4px 16px rgba(15,23,42,.25);opacity:0;visibility:hidden;transform:translateY(10px);
+    transition:opacity .25s,transform .25s,visibility .25s,background .2s;}
+  .to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+  .to-top:hover{background:var(--blue);}
+  .to-top svg{width:20px;height:20px;}
+  @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+</style>
+</head>
+<body>
+<div class="site-frame">
+
+<!-- HEADER (topbar + navbar sobre fundo navy contínuo) -->
+<div class="header-wrap" id="headerWrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-nav">
+      <a href="tel:4130444739" class="topbar-tel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>41 3044-4739</a>
+      <a href="mailto:contato@betel.eng.br" class="topbar-tel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>contato@betel.eng.br</a>
+    </div>
+    <div class="topbar-right">
+      <a href="trabalhe-conosco.html" class="topbar-btn tb-white">Trabalhe Conosco</a>
+      <a href="downloads/folder-betel-2026.pdf" class="topbar-btn tb-blue" target="_blank">Baixe o Folder</a>
+      <a href="fornecedores.html" class="topbar-btn tb-blue">Fornecedores</a>
+      <a href="seja-nosso-cliente.html" class="topbar-btn tb-blue-alt">Seja Nosso Cliente</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" class="logo">
+        <img src="img/betel-logo-header-trimmed.png" alt="Betel Engenharia">
+      </a>
+      <button class="hamburger" id="hambBtn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="sobre-nos.html">Sobre Nós</a></li>
+      <li><a href="solucoes.html">Serviços</a></li>
+      <li><a href="artigos.html">Artigos</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contato.html" class="nav-cta">Fale Conosco</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- NAVBAR FIXA (desce no scroll) -->
+<div class="nav-sticky" id="navSticky">
+  <div class="nav-left">
+    <a href="index.html" class="logo">
+      <img src="img/betel-logo-header-trimmed.png" alt="Betel Engenharia">
+    </a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <ul class="nav-links">
+    <li><a href="sobre-nos.html">Sobre Nós</a></li>
+    <li><a href="solucoes.html">Serviços</a></li>
+    <li><a href="artigos.html">Artigos</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="contato.html" class="nav-cta">Fale Conosco</a></li>
+  </ul>
+</div>
+
+<!-- MEGA MENU -->
+<div class="mega-menu" id="megaMenu">
+  <div class="mega-top">
+    <a href="index.html" class="logo">
+      <img src="img/betel-logo-header-trimmed.png" alt="Betel Engenharia">
+    </a>
+    <button class="mega-close" onclick="toggleMenu()">✕</button>
+  </div>
+  <div class="mega-grid">
+    <div class="mega-col">
+      <h4>betel</h4>
+      <ul>
+        <li><a href="institucional.html">Institucional</a></li>
+        <li><a href="equipe.html">Equipe</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="certificacoes.html">Certificações</a></li>
+        <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+        <li><a href="artigos.html">Artigos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="mega-col mega-col-wide">
+      <h4>serviços</h4>
+      <ul>
+        <li><a href="solucoes.html#montagens">Montagens Industriais</a></li>
+        <li><a href="solucoes.html#eletrica">Elétrica Industrial</a></li>
+        <li><a href="solucoes.html#tubulacoes">Tubulações</a></li>
+        <li><a href="solucoes.html#automacao">Automação Industrial</a></li>
+        <li><a href="solucoes.html#criogenicas">Inst. Criogênicas</a></li>
+        <li><a href="solucoes.html">Inst. de Gases Industriais</a></li>
+        <li><a href="solucoes.html#incendio">Seg. Contra Incêndio</a></li>
+        <li><a href="solucoes.html#eficiencia">Eficiência Energética</a></li>
+        <li><a href="solucoes.html#inspecoes">Inspeções NR-13</a></li>
+        <li><a href="projetos.html#consultorias">Consultorias e Estudos</a></li>
+        <li><a href="projetos.html#tubulacoes">Proj. Tubulações</a></li>
+        <li><a href="projetos.html#metalica-bim">Proj. Metálica (BIM)</a></li>
+        <li><a href="projetos.html#eletrica-automacao">Elétrica e Automação</a></li>
+        <li><a href="projetos.html#laser-scanner">Laser Scanner</a></li>
+        <li><a href="projetos.html#terceirizacao">Terceirização M.O.</a></li>
+      </ul>
+    </div>
+    <div class="mega-col">
+      <h4>contatos</h4>
+      <ul>
+        <li><a href="contato.html">Fale Conosco</a></li>
+        <li><a href="seja-nosso-cliente.html">Seja Nosso Cliente</a></li>
+        <li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+        <li><a href="fornecedores.html">Fornecedores</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TITULO -->
+<section class="page-title-simple">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span class="current">Artigos</span></div>
+  <h1>Artigos e Conteúdo Técnico</h1>
+  <p>Análises, boas práticas e novidades sobre engenharia industrial, montagens, elétrica, tubulações e automação.</p>
+</section>
+
+<!-- LISTA -->
+<section class="artigos-wrap">
+  <div class="artigos-grid">
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-tubulacoes.jpg" alt="Tubulações industriais"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">Tubulações</span>
+        <h3>Como planejar tubulações de utilidades sem parar a produção</h3>
+        <p>O que considerar em prazos, interligações e paradas programadas ao instalar novas linhas de utilidades numa planta em operação.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-eletrica.jpg" alt="Elétrica industrial"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">Elétrica</span>
+        <h3>NR-10 na prática: o que muda na rotina da equipe em campo</h3>
+        <p>Da análise de risco ao bloqueio de energia, os pontos da norma que mais impactam o dia a dia de uma montagem elétrica industrial.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-laser.jpg" alt="Laser scanner"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">Tecnologia</span>
+        <h3>Laser scanner: quando o as-built digital compensa o investimento</h3>
+        <p>Em que cenários o levantamento por nuvem de pontos reduz retrabalho e evita surpresas na fase de montagem.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-automacao.jpg" alt="Automação industrial"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">Automação</span>
+        <h3>Modernizar o supervisório ou trocar o CLP? Como decidir</h3>
+        <p>Critérios técnicos e de custo para escolher entre atualizar a camada de supervisão ou substituir o controlador.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-criogenia.jpg" alt="Instalações criogênicas"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">Criogenia</span>
+        <h3>Instalações criogênicas: cuidados de projeto que evitam falhas</h3>
+        <p>Materiais, dilatação térmica e segurança em linhas de gases criogênicos, medicinais e especiais.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+    <article class="artigo-card">
+      <div class="artigo-thumb"><img loading="lazy" src="img/fotos/artigo-bim.jpg" alt="Estruturas metálicas"></div>
+      <div class="artigo-body">
+        <span class="artigo-tag">BIM</span>
+        <h3>Projeto de estrutura metálica em BIM: ganhos além do desenho</h3>
+        <p>Compatibilização entre disciplinas, quantitativos confiáveis e menos interferência descoberta em obra.</p>
+        <a href="#" class="artigo-link">Ler artigo →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <h2>Precisa de uma solução de engenharia industrial?</h2>
+  <p>Fale com nossa equipe técnica e receba uma proposta adequada ao seu projeto.</p>
+  <a href="contato.html" class="hero-btn">Fale Conosco <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="logo footer-logo">
+        <img src="img/betel-logo-footer-trimmed.png" alt="Betel Engenharia">
+      </a>
+      <div class="footer-contact">
+        <div class="fci"><div class="fci-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><a href="https://maps.app.goo.gl/fPSEUR7VWBMyC5i99" target="_blank">Rua das Carmelitas, 3399 – Boqueirão, Curitiba/PR</a></div>
+        <div class="fci"><div class="fci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><a href="tel:4130444739">41 3044-4739 / 41 3044-3739</a></div>
+        <div class="fci"><div class="fci-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div><a href="https://wa.me/5541996778228">41 99677-8228 (WhatsApp)</a></div>
+        <div class="fci"><div class="fci-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><a href="mailto:contato@betel.eng.br">contato@betel.eng.br</a></div>
+      </div>
+      <div class="footer-social">
+        <a href="https://linkedin.com/company/betel-engenharia" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" fill="#93C5FD" stroke="none"/></svg></a>
+        <a href="https://wa.me/5541996778228" target="_blank" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="sobre-nos.html">Sobre Nós</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li><li><a href="#clientes">Clientes</a></li>
+        <li><a href="artigos.html">Artigos</a></li><li><a href="faq.html">FAQ</a></li>
+        <li><a href="contato.html">Contato</a></li><li><a href="trabalhe-conosco.html">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-col-wide">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="solucoes.html#montagens">Montagens Industriais</a></li>
+        <li><a href="solucoes.html#eletrica">Elétrica Industrial</a></li>
+        <li><a href="solucoes.html#tubulacoes">Tubulações</a></li>
+        <li><a href="solucoes.html#automacao">Automação Industrial</a></li>
+        <li><a href="solucoes.html#criogenicas">Inst. Criogênicas</a></li>
+        <li><a href="solucoes.html">Inst. de Gases Industriais</a></li>
+        <li><a href="solucoes.html#incendio">Segurança Incêndio</a></li>
+        <li><a href="solucoes.html#eficiencia">Eficiência Energética</a></li>
+        <li><a href="solucoes.html#inspecoes">Inspeções NR-13</a></li>
+        <li><a href="projetos.html#consultorias">Consultorias e Estudos</a></li>
+        <li><a href="projetos.html#tubulacoes">Proj. Tubulações</a></li>
+        <li><a href="projetos.html#metalica-bim">Proj. Metálica BIM</a></li>
+        <li><a href="projetos.html#eletrica-automacao">Elétrica e Automação</a></li>
+        <li><a href="projetos.html#laser-scanner">Laser Scanner</a></li>
+        <li><a href="projetos.html#terceirizacao">Terceirização M.O.</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Betel Engenharia LTDA. Todos os direitos reservados. Curitiba – Paraná – Brasil</span>
+    <span>Feito com ❤️ por <a href="https://www.instagram.com/agenciakroma" target="_blank">Agência KROMA</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/5541996778228" class="wa-float" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+</div>
+<script>
+  // ── Navbar fixa: desce quando o header original sai de vista ──
+  (function(){
+    const wrap=document.getElementById('headerWrap');
+    const sticky=document.getElementById('navSticky');
+    if(!wrap||!sticky)return;
+    let ticking=false;
+    function check(){
+      sticky.classList.toggle('show', window.scrollY > wrap.offsetHeight);
+      ticking=false;
+    }
+    window.addEventListener('scroll',function(){
+      if(!ticking){ticking=true;requestAnimationFrame(check);}
+    },{passive:true});
+    check();
+  })();
+
+  // ── Carousel ──
+  function sc(id,dir){const t=document.getElementById(id);t.scrollBy({left:dir*(t.querySelector('.card').offsetWidth+16)*2,behavior:'smooth'});}
+
+  // ── Hamburger / Mega Menu ──
+  function toggleMenu(){
+    const btn=document.getElementById('hambBtn');
+    const menu=document.getElementById('megaMenu');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  }
+
+  // Fecha o mega menu ao clicar em qualquer link dele.
+  // Necessário porque links para uma âncora (#id) na MESMA página não recarregam
+  // o documento — sem isso, o menu continuava aberto por cima do conteúdo e
+  // parecia que o clique "não fazia nada" ao navegar entre itens de Soluções.
+  document.querySelectorAll('.mega-menu a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('hambBtn').classList.remove('open');
+      document.getElementById('megaMenu').classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+
+  // ── Particle canvas for segmentos (light theme) ──
+  (function(){
+    const canvas=document.getElementById('seg-canvas');
+    if(!canvas)return;
+    const ctx=canvas.getContext('2d');
+    let W,H,pts=[];
+    function resize(){
+      const p=canvas.parentElement;
+      W=canvas.width=p.offsetWidth;
+      H=canvas.height=p.offsetHeight;
+    }
+    function mkPt(){
+      return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.5+.5};
+    }
+    function init(){resize();pts=[];for(let i=0;i<55;i++)pts.push(mkPt());}
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(let i=0;i<pts.length;i++){
+        for(let j=i+1;j<pts.length;j++){
+          const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+          if(d<120){
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x,pts[i].y);
+            ctx.lineTo(pts[j].x,pts[j].y);
+            ctx.strokeStyle=`rgba(26,86,255,${(1-d/120)*.10})`;
+            ctx.lineWidth=.8;
+            ctx.stroke();
+          }
+        }
+      }
+      pts.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(26,86,255,0.22)';
+        ctx.fill();
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W)p.vx*=-1;
+        if(p.y<0||p.y>H)p.vy*=-1;
+      });
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',()=>{resize();});
+    init();draw();
+  })();
+</script>
+
+<button class="to-top" id="toTop" aria-label="Voltar ao topo" title="Voltar ao topo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script>
+  (function(){
+    var b=document.getElementById('toTop');if(!b)return;
+    function f(){b.classList.toggle('show',window.scrollY>500);}
+    window.addEventListener('scroll',f,{passive:true});f();
+    b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  })();
+</script>
+</body>
+</html>
