@@ -267,6 +267,10 @@
   .kroma-heart svg{fill:#60A5FA;filter:drop-shadow(0 0 4px rgba(96,165,250,.55));}
   @keyframes kromaPulse{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
   @media (prefers-reduced-motion:reduce){.kroma-heart{animation:none;}}
+
+  /* Menu com 7 itens: nao quebrar linha em telas medias */
+  nav .nav-links a{white-space:nowrap;}
+  @media (min-width:1025px) and (max-width:1280px){nav .nav-links a{padding-left:9px!important;padding-right:9px!important;font-size:13px!important;letter-spacing:.3px!important;} nav{padding:0 28px!important;}}
 </style>
 <link rel="stylesheet" href="css/topo.css">
 </head>
@@ -302,7 +306,9 @@
     </div>
     <ul class="nav-links">
       <li><a href="sobre-nos.html">Sobre Nós</a></li>
-      <li><a href="solucoes.html">Serviços</a></li>
+      <li><a href="solucoes.html">Soluções</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="portfolio.html">Portfólio</a></li>
       <li><a href="artigos.html">Artigos</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contato.html" class="nav-cta">Fale Conosco</a></li>
