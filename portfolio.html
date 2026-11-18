@@ -528,6 +528,22 @@
   .to-top:hover{background:var(--blue);}
   .to-top svg{width:20px;height:20px;}
   @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+
+  /* =========================================================
+     AJUSTES 18/11/2026
+     ========================================================= */
+  /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
+  .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
+  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
+
+  /* Icone dos topicos igual ao da pagina Solucoes (check em circulo) */
+  .topicos li{padding-left:30px;}
+  .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
+
 </style>
 </head>
 <body>
@@ -681,7 +697,7 @@
       </div>
     </div>
     <div class="pf-card" data-cat="estruturas" onclick="openLightbox(4)">
-      <img loading="lazy" src="img/fotos/pf-estruturas-1.jpg" alt="Piperack com tubulações industriais">
+      <img loading="lazy" src="https://betel.eng.br/wp-content/uploads/2024/04/estruturas-metalicas.jpg" alt="Estruturas Metálicas e piperack">
       <div class="pf-card-overlay"></div>
       <div class="pf-card-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg></div>
       <div class="pf-card-info">
@@ -717,12 +733,12 @@
       </div>
     </div>
     <div class="pf-card" data-cat="tubulacoes" onclick="openLightbox(8)">
-      <img loading="lazy" src="img/fotos/pf-solda-1.jpg" alt="Soldador da Betel Engenharia">
+      <img loading="lazy" src="img/fotos/pf-solda-3.jpg" alt="Soldagem TIG de tubulação de aço inox">
       <div class="pf-card-overlay"></div>
       <div class="pf-card-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M8 11h6M11 8v6"/></svg></div>
       <div class="pf-card-info">
         <div class="pf-card-name">Soldagem e Pré-fabricação</div>
-        <span class="pf-card-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>4 fotos</span>
+        <span class="pf-card-count"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>2 fotos</span>
       </div>
     </div>
     <div class="pf-card" data-cat="estruturas" onclick="openLightbox(9)">
@@ -898,11 +914,11 @@
     {title:'Tubulações de Utilidades', imgs:['img/fotos/sol-tubulacoes.jpg', 'img/fotos/pf-tubulacoes-2.jpg', 'img/fotos/pf-tubulacoes-3.jpg', 'img/fotos/pf-tubulacoes-4.jpg']},
     {title:'Painéis e Instalações Elétricas', imgs:['img/fotos/sol-eletrica.jpg', 'img/fotos/sol-automacao.jpg', 'img/fotos/pf-eletrica-2.jpg', 'img/fotos/pf-eletrica-3.jpg']},
     {title:'Automação de Processo', imgs:['img/fotos/proj-eletrica-automacao.jpg', 'img/fotos/pf-automacao-2.jpg', 'img/fotos/hero-eletrica.jpg']},
-    {title:'Estrutura Metálica e Piperack', imgs:['img/fotos/pf-estruturas-1.jpg', 'img/fotos/sol-estruturas.jpg']},
+    {title:'Estrutura Metálica e Piperack', imgs:['https://betel.eng.br/wp-content/uploads/2024/04/estruturas-metalicas.jpg', 'https://betel.eng.br/wp-content/uploads/2024/04/projeto-estrutura-metalica-bim.png']},
     {title:'Instalação de Gases Criogênicos', imgs:['img/fotos/sol-criogenicas.jpg', 'img/fotos/pf-criogenicas-2.jpg', 'img/fotos/sol-nr13.jpg', 'img/fotos/sol-gases.jpg']},
     {title:'Sistema de Combate a Incêndio', imgs:['img/fotos/sol-incendio.jpg', 'img/fotos/pf-incendio-2.jpg', 'img/fotos/pf-incendio-3.jpg', 'img/fotos/pf-incendio-4.jpg']},
     {title:'Central de Utilidades e Ar Comprimido', imgs:['img/fotos/pf-utilidades-1.jpg', 'img/fotos/pf-utilidades-2.jpg', 'img/fotos/pf-utilidades-3.jpg', 'img/fotos/sol-eficiencia.jpg']},
-    {title:'Soldagem e Pré-fabricação', imgs:['img/fotos/pf-solda-1.jpg', 'img/fotos/equipe-solda.jpg', 'img/fotos/pf-solda-2.jpg', 'img/fotos/pf-solda-3.jpg']},
+    {title:'Soldagem e Pré-fabricação', imgs:['img/fotos/pf-solda-3.jpg', 'img/fotos/equipe-solda.jpg']},
     {title:'Projeto 3D de Utilidades (BIM)', imgs:['img/fotos/proj-bim.jpg', 'img/fotos/proj-tubulacoes.jpg', 'img/fotos/pf-bim-2.jpg', 'img/fotos/pf-bim-3.jpg', 'img/fotos/pf-bim-4.jpg']}
   ];
   let pfCur=0, pfIdx=0;

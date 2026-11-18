@@ -500,6 +500,34 @@
   .to-top:hover{background:var(--blue);}
   .to-top svg{width:20px;height:20px;}
   @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+
+  /* Fotos dos cards sobre azul escuro com 40% de transparencia */
+  .card{background:var(--blue-dark)!important;}
+  .card-img{opacity:.6;filter:none!important;}
+  .card:hover .card-img{opacity:.45;filter:none!important;}
+  .card-overlay{background:linear-gradient(to top,rgba(15,23,42,.6) 0%,rgba(15,23,42,0) 55%)!important;}
+
+  /* Hero: fotos sobre azul escuro com 40% de transparencia; legenda sem transparencia */
+  .hero-right{background:var(--blue-dark)!important;}
+  .hero-slide::after{background:rgba(26,35,126,.4)!important;}
+  .slide-caption{z-index:2;}
+
+
+  /* =========================================================
+     AJUSTES 18/11/2026
+     ========================================================= */
+  /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
+  .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
+  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
+
+  /* Icone dos topicos igual ao da pagina Solucoes (check em circulo) */
+  .topicos li{padding-left:30px;}
+  .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
+
 </style>
 </head>
 <body>
@@ -632,11 +660,6 @@
     <div class="hero-eyebrow">Fundada em 1995 · Curitiba, PR</div>
     <h1 class="hero-title">Há mais de<br>30 anos<br>construindo<br>o futuro</h1>
     <p class="hero-body">Soluções completas em engenharia industrial: projetos, montagens, instalações e manutenção com qualidade e segurança.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">30<span>+</span></div><div class="stat-label">Anos de Mercado</div></div>
-      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Especialidades</div></div>
-      <div class="stat"><div class="stat-num">13<span>+</span></div><div class="stat-label">Grandes Clientes</div></div>
-    </div>
     <a href="projetos.html" class="hero-btn">Conheça nossos projetos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
   <div class="hero-right">
@@ -669,7 +692,7 @@
     <a class="card" href="solucoes.html#incendio"><img loading="lazy" class="card-img" src="img/fotos/sol-incendio.jpg" alt="Segurança Contra Incêndio"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Segurança<br>Contra Incêndio</h3><div class="card-sub">Prevenção e combate</div></div><div class="card-plus">+</div></a>
     <a class="card" href="solucoes.html#automacao"><img loading="lazy" class="card-img" src="img/fotos/sol-automacao.jpg" alt="Automação Industrial"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Automação<br>Industrial</h3><div class="card-sub">Instrumentação e IHM</div></div><div class="card-plus">+</div></a>
     <a class="card" href="solucoes.html#tubulacoes"><img loading="lazy" class="card-img" src="img/fotos/sol-tubulacoes.jpg" alt="Tubulações Industriais"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Tubulações<br>Industriais</h3><div class="card-sub">Utilidades e processo</div></div><div class="card-plus">+</div></a>
-    <a class="card" href="solucoes.html#montagens"><img loading="lazy" class="card-img" src="img/fotos/sol-estruturas.jpg" alt="Estruturas Metálicas"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Estruturas<br>Metálicas</h3><div class="card-sub">Piperack e projetos</div></div><div class="card-plus">+</div></a>
+    <a class="card" href="solucoes.html#montagens"><img loading="lazy" class="card-img" src="https://betel.eng.br/wp-content/uploads/2024/04/estruturas-metalicas.jpg" alt="Estruturas Metálicas"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Estruturas<br>Metálicas</h3><div class="card-sub">Piperack e projetos</div></div><div class="card-plus">+</div></a>
     <a class="card" href="solucoes.html#criogenicas"><img loading="lazy" class="card-img" src="img/fotos/sol-criogenicas.jpg" alt="Instalações Criogênicas"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Instalações<br>Criogênicas</h3><div class="card-sub">Gases criogênicos e especiais</div></div><div class="card-plus">+</div></a>
     <a class="card" href="solucoes.html#criogenicas"><img loading="lazy" class="card-img" src="img/fotos/sol-gases.jpg" alt="Instalação de Gases Industriais"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Instalação de<br>Gases Industriais</h3><div class="card-sub">Redes e distribuição</div></div><div class="card-plus">+</div></a>
   </div>
@@ -682,10 +705,10 @@
 <div class="carousel-wrap" style="background:var(--gray-100)">
   <div class="carousel-track" id="t2">
     <a class="card" href="projetos.html#tubulacoes"><img loading="lazy" class="card-img" src="img/fotos/proj-tubulacoes.jpg" alt="Tubulações e Utilidades"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Tubulações &amp;<br>Utilidades</h3></div><div class="card-plus">+</div></a>
-    <a class="card" href="projetos.html#metalica-bim"><img loading="lazy" class="card-img" src="img/fotos/proj-bim.jpg" alt="Projetos de Metálica BIM"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Projetos de<br>Metálica</h3></div><div class="card-plus">+</div></a>
+    <a class="card" href="projetos.html#metalica-bim"><img loading="lazy" class="card-img" src="https://betel.eng.br/wp-content/uploads/2024/04/projeto-estrutura-metalica-bim.png" alt="Projetos de Metálica BIM"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Projetos de<br>Metálica</h3></div><div class="card-plus">+</div></a>
     <a class="card" href="projetos.html#eletrica-automacao"><img loading="lazy" class="card-img" src="img/fotos/proj-eletrica-automacao.jpg" alt="Elétrica e Automação"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Elétrica &amp;<br>Automação</h3></div><div class="card-plus">+</div></a>
     <a class="card" href="projetos.html#laser-scanner"><img loading="lazy" class="card-img" src="https://betel.eng.br/wp-content/uploads/2024/04/Laser-Scanner.webp" alt="Laser Scanner"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Laser<br>Scanner</h3></div><div class="card-plus">+</div></a>
-    <a class="card" href="projetos.html#consultorias"><img loading="lazy" class="card-img" src="img/fotos/engenheiro.jpg" alt="Consultorias e Estudos"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Consultorias<br>e Estudos</h3></div><div class="card-plus">+</div></a>
+    <a class="card" href="projetos.html#consultorias"><img loading="lazy" class="card-img" src="img/fotos/proj-consultorias.jpg" alt="Consultorias e Estudos"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Consultorias<br>e Estudos</h3></div><div class="card-plus">+</div></a>
     <a class="card" href="projetos.html#terceirizacao"><img loading="lazy" class="card-img" src="img/fotos/proj-terceirizacao.jpg" alt="Terceirização de Mão de Obra"><div class="card-overlay"></div><div class="card-info"><h3 class="card-name">Terceirização<br>Mão de Obra</h3></div><div class="card-plus">+</div></a>
   </div>
   <button class="carousel-nav carousel-prev" onclick="sc('t2',-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>

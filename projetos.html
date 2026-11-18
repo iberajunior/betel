@@ -488,6 +488,33 @@
   .to-top:hover{background:var(--blue);}
   .to-top svg{width:20px;height:20px;}
   @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+
+  /* Hero: texto centralizado na altura, alinhado a esquerda, sem faixa branca abaixo */
+  .video-hero{justify-content:center!important;padding-bottom:48px!important;}
+  .video-hero .breadcrumb{margin-bottom:18px;}
+  .video-hero .page-banner-sub{margin-bottom:0;}
+
+
+  /* Fotos dos blocos sobre azul escuro com 40% de transparencia */
+  .sobre-img{background:var(--blue-dark)!important;}
+  .sobre-img img{opacity:.6;filter:none!important;}
+
+
+  /* =========================================================
+     AJUSTES 18/11/2026
+     ========================================================= */
+  /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
+  .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
+  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
+
+  /* Icone dos topicos igual ao da pagina Solucoes (check em circulo) */
+  .topicos li{padding-left:30px;}
+  .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
+
 </style>
 </head>
 <body>
@@ -591,11 +618,6 @@
     <div class="hero-eyebrow">Do Estudo à Execução</div>
     <h1 class="page-banner-title">Projetos de engenharia com precisão técnica</h1>
     <p class="page-banner-sub">Desenvolvemos projetos completos de engenharia: consultorias, tubulações, estruturas metálicas, elétrica e automação, com tecnologia atual e projetistas da nossa própria equipe.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">30<span>+</span></div><div class="stat-label">Anos de Mercado</div></div>
-      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Frentes de Projeto</div></div>
-      <div class="stat"><div class="stat-num">13<span>+</span></div><div class="stat-label">Grandes Clientes</div></div>
-    </div>
   </div>
 </section>
 <div class="video-hero-spacer" id="heroSpacer"></div>
@@ -727,7 +749,7 @@
 <!-- DETALHE 5: CONSULTORIAS E ESTUDOS -->
 <section class="sobre" id="consultorias">
   <div class="sobre-img">
-    <img loading="lazy" src="img/fotos/engenheiro.jpg" alt="Consultorias e Estudos Betel Engenharia">
+    <img loading="lazy" src="img/fotos/proj-consultorias.jpg" alt="Consultorias e Estudos Betel Engenharia">
   </div>
   <div class="sobre-content">
     <h2 class="sobre-title">Consultorias e<br>Estudos</h2>
@@ -904,7 +926,7 @@
     const hero = document.querySelector('.video-hero');
     const spacer = document.getElementById('heroSpacer');
     if(!hero || !spacer) return;
-    function syncHeroSpacer(){ spacer.style.height = hero.offsetHeight + 'px'; }
+    function syncHeroSpacer(){ var off = spacer.offsetTop; hero.style.paddingTop = (off + 48) + 'px'; hero.style.minHeight = (off + (window.innerWidth > 768 ? 440 : 380)) + 'px'; spacer.style.height = Math.max(hero.offsetHeight - off, 0) + 'px'; }
     syncHeroSpacer();
     window.addEventListener('load', syncHeroSpacer);
     window.addEventListener('resize', syncHeroSpacer);

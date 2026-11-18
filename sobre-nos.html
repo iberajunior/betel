@@ -483,6 +483,28 @@
   .to-top:hover{background:var(--blue);}
   .to-top svg{width:20px;height:20px;}
   @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+
+  /* Hero: texto centralizado na altura, alinhado a esquerda, sem faixa branca abaixo */
+  .video-hero{justify-content:center!important;padding-bottom:48px!important;}
+  .video-hero .breadcrumb{margin-bottom:18px;}
+  .video-hero .page-banner-sub{margin-bottom:0;}
+
+
+  /* =========================================================
+     AJUSTES 18/11/2026
+     ========================================================= */
+  /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
+  .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
+  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
+
+  /* Icone dos topicos igual ao da pagina Solucoes (check em circulo) */
+  .topicos li{padding-left:30px;}
+  .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
+
 </style>
 </head>
 <body>
@@ -586,11 +608,6 @@
     <div class="hero-eyebrow">Fundada em 1995 · Curitiba, PR</div>
     <h1 class="page-banner-title">Engenharia que constrói confiança</h1>
     <p class="page-banner-sub">Há mais de 30 anos fazemos montagens industriais, elétrica, tubulações e automação com a qualidade e a segurança que a grande indústria exige.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">30<span>+</span></div><div class="stat-label">Anos de Mercado</div></div>
-      <div class="stat"><div class="stat-num">11</div><div class="stat-label">Especialidades</div></div>
-      <div class="stat"><div class="stat-num">13<span>+</span></div><div class="stat-label">Grandes Clientes</div></div>
-    </div>
   </div>
 </section>
 <div class="video-hero-spacer" id="heroSpacer"></div>
@@ -686,7 +703,7 @@
     <p>As pessoas são o principal ativo da Betel. Nossos profissionais são qualificados, multifuncionais, treinados periodicamente, certificados e equipados para os ambientes industriais mais exigentes.</p>
     <a href="trabalhe-conosco.html" class="sobre-btn">Trabalhe Conosco <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
-  <div class="equipe-img"><img loading="lazy" src="img/fotos/equipe-faiscas.jpg" alt="Profissional da Betel Engenharia cortando tubo de aço inox com esmerilhadeira"></div>
+  <div class="equipe-img"><img loading="lazy" src="img/fotos/equipe-tig.jpg" alt="Profissional da Betel Engenharia soldando tubulação de aço inox com TIG"></div>
 </section>
 
 <!-- CTA -->
@@ -833,7 +850,7 @@
     const hero = document.querySelector('.video-hero');
     const spacer = document.getElementById('heroSpacer');
     if(!hero || !spacer) return;
-    function syncHeroSpacer(){ spacer.style.height = hero.offsetHeight + 'px'; }
+    function syncHeroSpacer(){ var off = spacer.offsetTop; hero.style.paddingTop = (off + 48) + 'px'; hero.style.minHeight = (off + (window.innerWidth > 768 ? 440 : 380)) + 'px'; spacer.style.height = Math.max(hero.offsetHeight - off, 0) + 'px'; }
     syncHeroSpacer();
     window.addEventListener('load', syncHeroSpacer);
     window.addEventListener('resize', syncHeroSpacer);

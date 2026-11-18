@@ -265,6 +265,22 @@
   .to-top:hover{background:var(--blue);}
   .to-top svg{width:20px;height:20px;}
   @media (max-width:768px){.to-top{right:22px;bottom:80px;width:42px;height:42px;}}
+
+  /* =========================================================
+     AJUSTES 18/11/2026
+     ========================================================= */
+  /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
+  .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
+  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
+
+  /* Icone dos topicos igual ao da pagina Solucoes (check em circulo) */
+  .topicos li{padding-left:30px;}
+  .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
+
 </style>
 </head>
 <body>
