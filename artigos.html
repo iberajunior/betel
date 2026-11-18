@@ -541,7 +541,7 @@
   /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
   .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
     clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
-  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+  .pf-filter{border-radius:0!important;
     clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
   .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
 
@@ -550,6 +550,12 @@
   .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
 
+
+  /* Assinatura KROMA: coracao pulsando no azul claro do tema */
+  .kroma-heart{display:inline-flex;vertical-align:-2px;margin:0 3px;animation:kromaPulse 1.2s ease-in-out infinite;transform-origin:center;}
+  .kroma-heart svg{fill:#60A5FA;filter:drop-shadow(0 0 4px rgba(96,165,250,.55));}
+  @keyframes kromaPulse{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.kroma-heart{animation:none;}}
 </style>
 </head>
 <body>
@@ -795,7 +801,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 Betel Engenharia LTDA. Todos os direitos reservados. Curitiba – Paraná – Brasil</span>
-    <span>Feito com ❤️ por <a href="https://www.instagram.com/agenciakroma" target="_blank">Agência KROMA</a></span>
+    <span>Feito com <span class="kroma-heart" aria-label="amor"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.2 0 3.6 1.2 4.5 2.6.3.4.7.6 1.5.6s1.2-.2 1.5-.6c.9-1.4 2.3-2.6 4.5-2.6 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg></span> por <a href="https://www.instagram.com/agenciakroma" target="_blank">Agência KROMA</a></span>
   </div>
 </footer>
 

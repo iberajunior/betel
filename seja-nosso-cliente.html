@@ -298,7 +298,7 @@
   /* Botoes com cantos chanfrados (sup. esquerdo e inf. direito) */
   .hero-btn,.sobre-btn,.cf-submit,.btn-chanfro{border-radius:0!important;
     clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);}
-  .nav-cta,.topbar-btn,.pf-filter,.mega-actions a{border-radius:0!important;
+  .pf-filter{border-radius:0!important;
     clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
   .hero-btn:hover,.sobre-btn:hover,.cf-submit:hover{transform:none!important;}
 
@@ -307,41 +307,73 @@
   .topicos li::before{width:20px!important;height:20px!important;top:0!important;border-radius:0!important;
     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3C/svg%3E") center/contain no-repeat!important;}
 
+
+  /* Assinatura KROMA: coracao pulsando no azul claro do tema */
+  .kroma-heart{display:inline-flex;vertical-align:-2px;margin:0 3px;animation:kromaPulse 1.2s ease-in-out infinite;transform-origin:center;}
+  .kroma-heart svg{fill:#60A5FA;filter:drop-shadow(0 0 4px rgba(96,165,250,.55));}
+  @keyframes kromaPulse{0%,100%{transform:scale(1)}15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
+  @media (prefers-reduced-motion:reduce){.kroma-heart{animation:none;}}
 </style>
+<link rel="stylesheet" href="css/topo.css">
 </head>
 <body>
 <div class="site-frame">
 
-<!-- TOP BAR -->
-<div class="topbar">
-  <a href="tel:4130444739"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>41 3044-4739</a>
-  <div class="topbar-dot"></div>
-  <a href="tel:4130443739">41 3044-3739</a>
-  <div class="topbar-dot"></div>
-  <a href="mailto:contato@betel.eng.br"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>contato@betel.eng.br</a>
-  <div class="topbar-dot"></div>
-  <a href="https://linkedin.com/company/betel-engenharia" target="_blank"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+<!-- HEADER (topbar + navbar sobre fundo navy contínuo) -->
+<div class="header-wrap" id="headerWrap">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-nav">
+      <a href="tel:4130444739" class="topbar-tel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>41 3044-4739</a>
+      <a href="mailto:contato@betel.eng.br" class="topbar-tel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>contato@betel.eng.br</a>
+    </div>
+    <div class="topbar-right">
+      <a href="trabalhe-conosco.html" class="topbar-btn tb-white">Trabalhe Conosco</a>
+      <a href="downloads/folder-betel-2026.pdf" class="topbar-btn tb-blue" target="_blank">Baixe o Folder</a>
+      <a href="fornecedores.html" class="topbar-btn tb-blue">Fornecedores</a>
+      <a href="seja-nosso-cliente.html" class="topbar-btn tb-blue-alt">Seja Nosso Cliente</a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html" class="logo">
+        <img src="img/betel-logo-header-trimmed.png" alt="Betel Engenharia">
+      </a>
+      <button class="hamburger" id="hambBtn" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="sobre-nos.html">Sobre Nós</a></li>
+      <li><a href="solucoes.html">Serviços</a></li>
+      <li><a href="artigos.html">Artigos</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contato.html" class="nav-cta">Fale Conosco</a></li>
+    </ul>
+  </nav>
 </div>
 
-<!-- NAVBAR -->
-<nav>
+<!-- NAVBAR FIXA (desce no scroll) -->
+<div class="nav-sticky" id="navSticky">
   <div class="nav-left">
     <a href="index.html" class="logo">
       <img src="img/betel-logo-header-trimmed.png" alt="Betel Engenharia">
     </a>
-    <button class="hamburger" id="hambBtn" onclick="toggleMenu()" aria-label="Menu">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
     <li><a href="sobre-nos.html">Sobre Nós</a></li>
-    <li><a href="solucoes.html">Soluções</a></li>
-    <li><a href="projetos.html">Projetos</a></li>
-    <li><a href="portfolio.html">Portfólio</a></li>
+    <li><a href="solucoes.html">Serviços</a></li>
+    <li><a href="artigos.html">Artigos</a></li>
+    <li><a href="faq.html">FAQ</a></li>
     <li><a href="contato.html" class="nav-cta">Fale Conosco</a></li>
   </ul>
-</nav>
+</div>
 
 <!-- MEGA MENU -->
 <div class="mega-menu" id="megaMenu">
@@ -357,26 +389,25 @@
       <ul>
         <li><a href="institucional.html">Institucional</a></li>
         <li><a href="equipe.html">Equipe</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
         <li><a href="certificacoes.html">Certificações</a></li>
         <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+        <li><a href="artigos.html">Artigos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
     </div>
-    <div class="mega-col">
-      <h4>soluções</h4>
+    <div class="mega-col mega-col-wide">
+      <h4>serviços</h4>
       <ul>
         <li><a href="solucoes.html#montagens">Montagens Industriais</a></li>
         <li><a href="solucoes.html#eletrica">Elétrica Industrial</a></li>
         <li><a href="solucoes.html#tubulacoes">Tubulações</a></li>
         <li><a href="solucoes.html#automacao">Automação Industrial</a></li>
         <li><a href="solucoes.html#criogenicas">Inst. Criogênicas</a></li>
+        <li><a href="solucoes.html">Inst. de Gases Industriais</a></li>
         <li><a href="solucoes.html#incendio">Seg. Contra Incêndio</a></li>
         <li><a href="solucoes.html#eficiencia">Eficiência Energética</a></li>
         <li><a href="solucoes.html#inspecoes">Inspeções NR-13</a></li>
-      </ul>
-    </div>
-    <div class="mega-col">
-      <h4>projetos</h4>
-      <ul>
         <li><a href="projetos.html#consultorias">Consultorias e Estudos</a></li>
         <li><a href="projetos.html#tubulacoes">Proj. Tubulações</a></li>
         <li><a href="projetos.html#metalica-bim">Proj. Metálica (BIM)</a></li>
@@ -538,9 +569,10 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 Betel Engenharia LTDA. Todos os direitos reservados. Curitiba – Paraná – Brasil</span>
-    <span>Feito com ❤️ por <a href="https://www.instagram.com/agenciakroma" target="_blank">Agência KROMA</a></span>
+    <span>Feito com <span class="kroma-heart" aria-label="amor"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.2 0 3.6 1.2 4.5 2.6.3.4.7.6 1.5.6s1.2-.2 1.5-.6c.9-1.4 2.3-2.6 4.5-2.6 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg></span> por <a href="https://www.instagram.com/agenciakroma" target="_blank">Agência KROMA</a></span>
   </div>
 </footer>
+</div><!-- /site-frame -->
 
 <a href="https://wa.me/5541996778228" class="wa-float" target="_blank" title="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -616,6 +648,17 @@
     function f(){b.classList.toggle('show',window.scrollY>500);}
     window.addEventListener('scroll',f,{passive:true});f();
     b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  })();
+</script>
+<script>
+  // Navbar fixa: desce quando o topo original sai de vista
+  (function(){
+    var wrap=document.getElementById('headerWrap'), sticky=document.getElementById('navSticky');
+    if(!wrap||!sticky)return;
+    var t=false;
+    function check(){sticky.classList.toggle('show', window.scrollY > wrap.offsetHeight); t=false;}
+    window.addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(check);}},{passive:true});
+    check();
   })();
 </script>
 </body>
