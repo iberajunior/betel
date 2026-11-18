@@ -730,5 +730,25 @@
     check();
   })();
 </script>
+<script>
+  // Botoes flutuantes (WhatsApp e voltar ao topo) sobem para ficar 5px acima da linha do rodape
+  (function(){
+    var line=document.querySelector('.footer-bottom');
+    var els=[document.querySelector('.wa-float'),document.getElementById('toTop')].filter(Boolean);
+    if(!line||!els.length)return;
+    var lift=0,t=false;
+    function upd(){
+      var low=0;
+      els.forEach(function(e){var b=e.getBoundingClientRect().bottom+lift; if(b>low)low=b;});
+      var need=Math.max(0, low-(line.getBoundingClientRect().top-5));
+      if(need!==lift){lift=need; els.forEach(function(e){e.style.translate='0 '+(-lift)+'px';});}
+      t=false;
+    }
+    function q(){if(!t){t=true;requestAnimationFrame(upd);}}
+    window.addEventListener('scroll',q,{passive:true});
+    window.addEventListener('resize',q);
+    upd();
+  })();
+</script>
 </body>
 </html>
