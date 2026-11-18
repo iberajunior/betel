@@ -560,6 +560,14 @@
   /* Menu com 7 itens: nao quebrar linha em telas medias */
   nav .nav-links a{white-space:nowrap;}
   @media (min-width:1025px) and (max-width:1280px){nav .nav-links a{padding-left:9px!important;padding-right:9px!important;font-size:13px!important;letter-spacing:.3px!important;} nav{padding:0 28px!important;}}
+
+  /* Moldura do site: todo o conteudo dentro das barras laterais em degrade (desktop) */
+  @media (min-width:1025px){
+    .site-frame{padding:0 10px;background:linear-gradient(180deg,#1A237E 0,#FFFFFF 900px,#FFFFFF calc(100% - 900px),#1A237E 100%);}
+    .header-wrap nav{margin:0!important;}
+    .hero-frame{padding:0!important;background:none!important;}
+    .video-hero{left:10px!important;right:10px!important;width:auto!important;}
+  }
 </style>
 </head>
 <body>
